@@ -6,10 +6,12 @@ import Link from "next/link"
 import { ChevronDown } from "lucide-react"
 import { downloadItems } from "@/lib/constants"
 import { useEffect, useRef, useState } from "react"
-
+import { AnimatePresence, motion } from "motion/react"
+import { childAnimation, parentAnimation } from "@/providers/dropDownAnimation"
 
 
 export const DesktopNavbar = () => {
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
 
   return (
     <nav className="hidden lg:flex items-center justify-between py-2 text-sm">
@@ -17,47 +19,53 @@ export const DesktopNavbar = () => {
       <Logo />
 
       {/* navlink */}
-      <div
-        className="flex items-center justify-center gap-6 list-none text-brand-300"
-      >
+      <div className="flex items-center justify-center gap-6 list-none text-brand-300">
         {navLinks.map((item) => (
-          <div key={item.label} className="relative group py-1.5">
+          <div
+            key={item.label}
+            className="relative group py-1"
+            onMouseEnter={() => setHoveredItem(item.label)}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
 
             {/* Parent Link */}
-            {item.href ? (
-              <Link
-                href={item.href}
-                className="flex items-center gap-1"
-              >
-                {item.label}
-                {item.nestedLinks && <ChevronDown size={16} />}
-              </Link>
-            ) : (
-              <div className="flex items-center gap-1 cursor-default">
-                {item.label}
+            <div className="flex items-center gap-1 cursor-pointer">
+              {item.href ? (
+                <Link href={item.href}>{item.label}</Link>
+              ) : (
+                <span>{item.label}</span>
+              )}
+
+              {item.nestedLinks && (
                 <ChevronDown
                   size={14}
-                  className="group-hover:rotate-180 transition-transform duration-300"
+                  className={`transition-transform duration-300 ${hoveredItem === item.label ? "rotate-180" : ""
+                    }`}
                 />
-              </div>
-            )}
+              )}
+            </div>
 
             {/* Nested Links */}
-            {item.nestedLinks && (
-              <div
-                className="absolute top-full left-0 hidden group-hover:flex flex-col bg-gray-100 border border-gray-200 dark:border-gray-600  dark:bg-gray-800 shadow-sm rounded-md overflow-hidden"
-              >
-                {item.nestedLinks.map((nestedItem) => (
-                  <Link
-                    key={nestedItem.href}
-                    href={nestedItem.href}
-                    className="px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 whitespace-nowrap transition-colors"
-                  >
-                    {nestedItem.label}
-                  </Link>
-                ))}
-              </div>
-            )}
+            <AnimatePresence>
+              {item.nestedLinks && hoveredItem === item.label && (
+                <motion.div
+                  variants={parentAnimation} initial="hidden" animate="visible"
+                  className="absolute top-full left-0 flex flex-col bg-gray-100 border border-gray-200 dark:border-gray-600  dark:bg-gray-800 shadow-sm rounded-md overflow-hidden min-w-37.5 divide-y divide-brand-500/20"
+                >
+                  {item.nestedLinks.map((nestedItem) => (
+                    <motion.div
+                      variants={childAnimation}
+                      key={nestedItem.href}
+                      className="px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 whitespace-nowrap transition-colors"
+                    >
+                      <Link href={nestedItem.href}>
+                        {nestedItem.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ))}
       </div>
@@ -70,7 +78,7 @@ export const DesktopNavbar = () => {
 
 
 const DownloadButton = () => {
-  const [isDownloadListOpen, setIsDownloadListOpen] = useState<true | false>(false);
+  const [isDownloadListOpen, setIsDownloadListOpen] = useState(false);
   const buttonAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -93,28 +101,33 @@ const DownloadButton = () => {
     <div ref={buttonAreaRef} className="relative">
       <button
         onClick={handleDownloadClick}
-
-        className="bg-linear-to-r from-brand-200 to-brand-500 px-4 py-2 rounded-full text-white hover:opacity-90 transition-opacity"
+        className="bg-linear-to-r flex items-center gap-1  from-brand-200 to-brand-500 px-4 py-2 rounded-full text-white hover:opacity-90 transition-opacity"
 
       >
-        Download
+        <span>Download</span>
+        <ChevronDown size={14} className={`${isDownloadListOpen ? "rotate-180" : ""} transition-transform duration-300`} />
       </button>
 
-      {isDownloadListOpen && (
-        <div
-          className="absolute top-full -left-[50%] flex flex-col bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-500 whitespace-nowrap rounded-md overflow-hidden mt-1.5 text-brand-300"
-        >
-          {downloadItems && downloadItems.map((item, index) => (
-            <Link
-              key={item.label + index}
-              href={item.href}
-              className="px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 whitespace-nowrap transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {isDownloadListOpen && (
+          <motion.div
+            variants={parentAnimation} initial="hidden" animate="visible" exit="exit"
+            className="absolute top-full -left-[50%] flex flex-col whitespace-nowrap border border-gray-200 dark:border-gray-600 divide-y divide-brand-500/20 rounded-md overflow-hidden mt-1.5 text-brand-300"
+          >
+            {downloadItems && downloadItems.map((item, index) => (
+              <motion.div
+                variants={childAnimation}
+                key={item.label + index}
+                className="px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 whitespace-nowrap transition-colors bg-gray-100 dark:bg-gray-800"
+              >
+                <Link href={item.href}>
+                  {item.label}
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

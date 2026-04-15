@@ -7,6 +7,7 @@ import ToggleMode from "../toggleMode"
 import { downloadItems, navLinks } from "@/lib/constants"
 import Link from "next/link"
 
+
 export const MobileNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [openNavItems, setOpenNavItems] = useState<string[]>([])
