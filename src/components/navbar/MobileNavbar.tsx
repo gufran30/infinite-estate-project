@@ -49,7 +49,7 @@ export const MobileNavbar = () => {
             {navLinks.map((item) => (
               <div
                 key={item.label}
-                className="flex flex-col dark:text-neutral-400 text-brand-300"
+                className="flex flex-col dark:text-neutral-400 text-neutral-800"
               >
                 {item.href ? (
                   <Link

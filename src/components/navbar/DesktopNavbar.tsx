@@ -19,7 +19,7 @@ export const DesktopNavbar = () => {
       <Logo />
 
       {/* navlink */}
-      <div className="flex items-center justify-center gap-6 list-none text-brand-300">
+      <div className="flex items-center justify-center gap-6 list-none text-neutral-800">
         {navLinks.map((item) => (
           <div
             key={item.label}
@@ -31,7 +31,7 @@ export const DesktopNavbar = () => {
             {/* Parent Link */}
             <div className="flex items-center gap-1 cursor-pointer">
               {item.href ? (
-                <Link href={item.href}>{item.label}</Link>
+                <Link href={item.href} className="hover:text-neutral-600">{item.label}</Link>
               ) : (
                 <span>{item.label}</span>
               )}
@@ -50,7 +50,7 @@ export const DesktopNavbar = () => {
               {item.nestedLinks && hoveredItem === item.label && (
                 <motion.div
                   variants={parentAnimation} initial="hidden" animate="visible"
-                  className="absolute top-full left-0 flex flex-col bg-gray-100 border border-gray-200 dark:border-gray-600  dark:bg-gray-800 shadow-sm rounded-md overflow-hidden min-w-37.5 divide-y divide-brand-500/20"
+                  className="absolute top-full left-0 flex flex-col bg-gray-100 border border-gray-200 dark:border-gray-600  dark:bg-gray-800 shadow-sm rounded-md overflow-hidden min-w-37.5 divide-y divide-neutral-500/20"
                 >
                   {item.nestedLinks.map((nestedItem) => (
                     <motion.div
@@ -112,7 +112,7 @@ const DownloadButton = () => {
         {isDownloadListOpen && (
           <motion.div
             variants={parentAnimation} initial="hidden" animate="visible" exit="exit"
-            className="absolute top-full -left-[50%] flex flex-col whitespace-nowrap border border-gray-200 dark:border-gray-600 divide-y divide-brand-500/20 rounded-md overflow-hidden mt-1.5 text-brand-300"
+            className="absolute top-full -left-[50%] flex flex-col whitespace-nowrap  divide-y divide-neutral-500/20 rounded-md overflow-hidden mt-1.5 text-neutral-800 shadow-lg"
           >
             {downloadItems && downloadItems.map((item, index) => (
               <motion.div
