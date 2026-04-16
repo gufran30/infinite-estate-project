@@ -7,7 +7,7 @@ import { ChevronDown } from "lucide-react"
 import { downloadItems } from "@/lib/constants"
 import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
-import { childAnimation, parentAnimation } from "@/providers/dropDownAnimation"
+import { childAnimation, parentAnimation } from "@/components/animation-components/dropDownAnimation"
 
 
 export const DesktopNavbar = () => {

@@ -1,5 +1,5 @@
-import { Variants } from "motion/react"
 
+import { Variants } from "motion/react"
 
 export const parentAnimation: Variants = {
   hidden: {

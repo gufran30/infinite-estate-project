@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Manrope, Saira_Stencil_One } from "next/font/google";
+import { Inter, PT_Serif } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/themeProvider";
 
@@ -9,17 +9,10 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"]
 });
 
-const sairaStencil = Saira_Stencil_One({
-  variable: "--font-saira-stencil-one",
+const ptSerif = PT_Serif({
+  variable: "--font-ptSerif",
   subsets: ["latin"],
-  weight: ["400"]
-});
-
-const manrope = Manrope({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"]
-
+  weight: ["400", "700"]
 });
 
 export const metadata: Metadata = {
@@ -35,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${manrope.variable} ${sairaStencil.variable} h-full antialiased`}
+      className={`${inter.variable} ${ptSerif.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
