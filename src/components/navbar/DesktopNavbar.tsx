@@ -19,7 +19,7 @@ export const DesktopNavbar = () => {
       <Logo />
 
       {/* navlink */}
-      <div className="flex items-center justify-center gap-6 list-none text-neutral-800">
+      <div className="flex items-center justify-center gap-6 list-none text-neutral-800 dark:text-neutral-400">
         {navLinks.map((item) => (
           <div
             key={item.label}
@@ -31,7 +31,7 @@ export const DesktopNavbar = () => {
             {/* Parent Link */}
             <div className="flex items-center gap-1 cursor-pointer">
               {item.href ? (
-                <Link href={item.href} className="hover:text-neutral-600">{item.label}</Link>
+                <Link href={item.href} className="hover:text-neutral-600 dark:hover:text-neutral-200">{item.label}</Link>
               ) : (
                 <span>{item.label}</span>
               )}
@@ -56,7 +56,7 @@ export const DesktopNavbar = () => {
                     <motion.div
                       variants={childAnimation}
                       key={nestedItem.href}
-                      className="px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 whitespace-nowrap transition-colors"
+                      className="px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-neutral-200 whitespace-nowrap transition-colors"
                     >
                       <Link href={nestedItem.href}>
                         {nestedItem.label}
@@ -118,7 +118,7 @@ const DownloadButton = () => {
               <motion.div
                 variants={childAnimation}
                 key={item.label + index}
-                className="px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 whitespace-nowrap transition-colors bg-gray-100 dark:bg-gray-800"
+                className="px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 whitespace-nowrap transition-colors bg-gray-100 dark:hover:text-neutral-200 dark:text-neutral-400 dark:bg-gray-800"
               >
                 <Link href={item.href}>
                   {item.label}

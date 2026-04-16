@@ -48,7 +48,7 @@ const Hero = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 10000);
+    }, 7 * 1000);
 
     return () => clearInterval(timer)
   }, []);
@@ -84,10 +84,10 @@ const Hero = () => {
           transition={{ delay: .3, duration: 0.5 }}
           className="pt-40 flex flex-col items-center justify-center"
         >
-          <h1 className="text-5xl md:text-6xl text-center font-medium text-neutral-100">
+          <h1 className="text-4xl md:text-6xl text-center font-medium text-neutral-100">
             Infinite Building <br className="lg:hidden" /> Technologies
           </h1>
-          <p className="pt-4 max-w-90 lg:max-w-120 text-center text-base lg:text-lg text-neutral-300">
+          <p className="pt-4 max-w-90 lg:max-w-120 text-center text-sm lg:text-lg text-neutral-300">
             Your Partner in End-to-End Real Estate Design, Monitoring, and Development Management
           </p>
           <div className="pt-6 flex items-center gap-4 select-none">
@@ -126,7 +126,7 @@ const ButtonCTA = ({ className, children, to }: {
         initial={{ scale: 1 }}
         whileHover={{ scale: 1.02 }}
         transition={{ ease: "easeInOut" }}
-        className={cn(`border border-neutral-200 rounded-md py-1 px-5 text-sm lg:text-base text-neutral-200 font-semibold transition-colors duration-300`, className)}>
+        className={cn(`border border-neutral-200 rounded-md py-1 px-5 text-sm lg:text-base text-neutral-200 font-semibold transition-colors duration-300 whitespace-nowrap`, className)}>
         {children}
       </motion.button>
     </Link>
