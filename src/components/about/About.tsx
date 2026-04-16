@@ -25,7 +25,7 @@ const listItems: string[] = [
 
 const About = () => {
   return (
-    <section className="min-h-screen bg-green-300">
+    <section className="min-h-screen">
       <Container className="pt-20 text-neutral-600 dark:text-neutral-400">
 
         {/* containerVariants */}
