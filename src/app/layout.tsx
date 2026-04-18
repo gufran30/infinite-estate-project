@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter, PT_Serif } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/themeProvider";
-import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/footer/Footer";
+import Navbar from "@/components/layout/navbar/Navbar";
+import Footer from "@/components/layout/footer/Footer";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -30,7 +30,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${ptSerif.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} ${ptSerif.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
