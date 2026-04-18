@@ -5,8 +5,7 @@ export const Heading = ({ children, className }: {
 }) => {
 
   return (
-    <div
-    >
+    <div>
       <h1 className={cn(`text-center text-3xl md:text-4xl font-semibold text-neutral-800 dark:text-neutral-200 capitalize max-w-120 mx-auto font-ptSerif`, className)}>
         {children}
       </h1>

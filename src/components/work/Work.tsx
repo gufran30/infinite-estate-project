@@ -22,7 +22,7 @@ const duplicatedImages = [...images, ...images];
 const Work = () => {
   return (
     <section className="min-h-screen overflow-hidden bg-white dark:bg-stone-950">
-      <Container className="pt-20 text-neutral-600 dark:text-neutral-400">
+      <Container className="pt-30 text-neutral-600 dark:text-neutral-400">
 
         <motion.div
           variants={containerVariants}
@@ -45,7 +45,7 @@ const Work = () => {
           {/* 3. Infinite Carousel Container */}
           <motion.div
             variants={itemVariants}
-            className="relative mt-20  bg-red-300 w-full overflow-hidden"
+            className="relative mt-20 w-full overflow-hidden"
           >
             {/* The Track that actually moves */}
             <motion.div

@@ -45,7 +45,7 @@ const cardDetails = [
 
 const Service = () => {
   return (
-    <section className='min-h-screen bg-red-200'>
+    <section className='min-h-screen'>
       <Container className="pt-20 text-neutral-600 dark:text-neutral-400">
 
         {/* containerVariant */}
