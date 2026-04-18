@@ -84,3 +84,15 @@ export const downloadItems: DownloadItem[] = [
     href: "https://infinitebuildingtech.com/downloads/VISTING-CARD.jpg",
   },
 ]
+
+export interface ShowcaseImages {
+  title: string,
+  src: string,
+  alt: string,
+}
+
+export interface ShowcaseImagesCommpiled {
+  heading: string,
+  paragraph: string,
+  images: ShowcaseImages[]
+}

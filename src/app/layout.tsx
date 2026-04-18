@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, PT_Serif } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/themeProvider";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -33,9 +35,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider attribute={"class"} defaultTheme="system" enableSystem disableTransitionOnChange>
+          <Navbar />
           <main>
             {children}
           </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
