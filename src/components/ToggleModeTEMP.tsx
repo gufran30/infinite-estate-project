@@ -5,7 +5,7 @@ import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
 
-const ToggleMode = () => {
+const ToggleModeTEMP = () => {
 
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -44,4 +44,4 @@ const ToggleMode = () => {
   )
 }
 
-export default ToggleMode
+export default ToggleModeTEMP
