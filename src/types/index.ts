@@ -23,3 +23,10 @@ export interface ShowcaseImagesCommpiled {
   paragraph: string;
   images: ShowcaseImages[];
 }
+
+export interface ContactInfo {
+  icon: React.ReactNode;
+  name: string;
+  description: string;
+  href?: string;
+}

@@ -8,7 +8,6 @@ const showcaseImages1: ShowcaseImages[] = [
 const showcaseImages2: ShowcaseImages[] = [
   { title: "Mantri Square Mall", src: "/images/retail-malls/Two/ssquare1.webp", alt: "ssquare1 image" },
   { title: "Mantri Square Mall", src: "/images/retail-malls/Two/ssquare2.webp", alt: "ssquare2 image" },
-  { title: "Mantri Square Mall", src: "/images/retail-malls/Two/ssquare2.webp", alt: "ssquare2 image" }
 ]
 
 export const showcaseImagesCommpiled: ShowcaseImagesCommpiled[] = [

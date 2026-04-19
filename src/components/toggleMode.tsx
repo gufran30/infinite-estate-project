@@ -14,6 +14,10 @@ const ToggleMode = () => {
     setMounted(true);
   }, []);
 
+  if (!mounted) {
+    return <div className="p-2 size-6 bg-gray-100 dark:bg-gray-900 transition-transform duration-300" /> // Use a div with the same size as your button
+  }
+
   const toggleTheme = () => {
     console.log(theme)
     setTheme(theme === "dark" ? "light" : "dark")
@@ -22,7 +26,7 @@ const ToggleMode = () => {
     <>
       <button
         onClick={toggleTheme}
-        className="bg-stone-200 dark:bg-stone-800 p-2 rounded-md cursor-pointer"
+        className="bg-gray-200 dark:bg-gray-800 p-2 rounded-md cursor-pointer"
       >
         <AnimatePresence mode="wait">
           <motion.div

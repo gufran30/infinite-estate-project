@@ -3,11 +3,12 @@
 import { Logo } from "../../Logo"
 import Link from "next/link"
 import { ChevronDown } from "lucide-react"
-import React, { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import { childAnimation, parentAnimation } from "@/components/animation-components/dropDownAnimation"
 import { downloadItems, navLinks } from "./NavbarStats"
 import { usePathname } from "next/navigation"
+import { useState } from "react"
+import ToggleMode from "@/components/ToggleMode"
 
 
 export const DesktopNavbar = () => {
@@ -15,17 +16,18 @@ export const DesktopNavbar = () => {
   const pathname = usePathname(); // Get current route
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
-    // 1. Only intercept if it's an anchor link AND we are already on the home page
     if (href.startsWith("#") && pathname === "/") {
       e.preventDefault();
-      const elem = document.querySelector(href);
+
+      const targetId = href.split("#")[1];
+      const elem = document.getElementById(targetId);
       if (elem) {
         elem.scrollIntoView({ behavior: "smooth" });
+
+        // 3. Update the URL correctly without doubling up
+        window.history.pushState(null, "", `#${targetId}`);
       }
-      window.history.pushState(null, "", href);
     }
-    // 2. If it's an anchor link but we are NOT on the home page, 
-    // we let the <Link> component navigate to "/" + href (e.g., "/#about")
   };
 
   return (
@@ -99,7 +101,10 @@ export const DesktopNavbar = () => {
       </div>
 
       {/* nav CTA */}
-      <DownloadButton />
+      <div className="flex items-center justify-center gap-2">
+        <ToggleMode />
+        <DownloadButton />
+      </div>
     </nav>
   )
 }
@@ -107,28 +112,16 @@ export const DesktopNavbar = () => {
 
 const DownloadButton = () => {
   const [isDownloadListOpen, setIsDownloadListOpen] = useState(false);
-  const buttonAreaRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (buttonAreaRef.current && !buttonAreaRef.current.contains(e.target as Node)) {
-        setIsDownloadListOpen(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
-
-
-  const handleDownloadClick = () => {
-    setIsDownloadListOpen(!isDownloadListOpen)
-  }
 
   return (
-    <div ref={buttonAreaRef} className="relative">
+    <div
+      className="relative"
+      onBlur={(e) => {
+        return !e.currentTarget.contains(e.relatedTarget as Node) && setIsDownloadListOpen(false)
+      }}
+    >
       <button
-        onClick={handleDownloadClick}
+        onClick={() => setIsDownloadListOpen(!isDownloadListOpen)}
         className="bg-linear-to-r flex items-center gap-1  from-brand-200 to-brand-500 px-4 py-2 rounded-full text-white hover:opacity-90 transition-opacity"
 
       >
@@ -148,7 +141,7 @@ const DownloadButton = () => {
                 key={item.label + index}
                 className="px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 whitespace-nowrap transition-colors bg-gray-100 dark:hover:text-neutral-200 dark:text-neutral-400 dark:bg-gray-800"
               >
-                <Link href={item.href}>
+                <Link href={item.href} target="_blank">
                   {item.label}
                 </Link>
               </motion.div>

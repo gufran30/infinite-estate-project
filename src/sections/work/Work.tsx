@@ -7,22 +7,11 @@ import { containerVariants, itemVariants } from "@/components/animation-componen
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { StripBottomLine } from "@/components/StripBottomLine";
-
-
-const images = [
-  { src: "/images/biiion.webp", alt: "Project 1" },
-  { src: "/images/bion1.webp", alt: "Project 2" },
-  { src: "/images/bion4.webp", alt: "Project 3" },
-  { src: "/images/zion1.webp", alt: "Project 4" },
-  { src: "/images/zion2.webp", alt: "Project 5" },
-];
-
-// Doubling the array ensures a seamless infinite transition
-const duplicatedImages = [...images, ...images];
+import { duplicatedImages } from "./WorkStats";
 
 export const Work = () => {
   return (
-    <section id="work" className="min-h-screen overflow-hidden bg-white dark:bg-stone-950">
+    <section id="work" className="min-h-screen overflow-hidden">
       <Container className="pt-30 text-neutral-600 dark:text-neutral-400">
 
         <motion.div
@@ -73,6 +62,7 @@ export const Work = () => {
                     src={image.src}
                     alt={image.alt}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>

@@ -1,7 +1,7 @@
 import { PlottedVillasSection } from "./_components";
 
 export const metadata = {
-  title: "",
+  title: "Residental Plotted / Villas | Infinite Building Technologies",
   description: ""
 }
 

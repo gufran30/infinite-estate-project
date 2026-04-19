@@ -1,11 +1,11 @@
 
-import { About } from "@/sections/About";
-import { Hero } from "@/sections/Hero";
-import { Service } from "@/sections/Service";
-import { Testimonials } from "@/sections/Testimonials";
-import { Work } from "@/sections/Work";
+import { About } from "@/sections/about/About";
+import { Hero } from "@/sections/hero/Hero";
+import { Service } from "@/sections/service/Service";
+import { Testimonials } from "@/sections/testimonials/Testimonials";
+import { Work } from "@/sections/work/Work";
 import FloatingWhatsapp from "@/components/FloatingWhatsapp";
-import { Contact } from "@/sections/Contact";
+import { Contact } from "@/sections/contact/Contact";
 
 
 export default function Home() {

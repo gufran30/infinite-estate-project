@@ -1,7 +1,7 @@
 import { HighRiseSection } from "./_components";
 
 export const metadata = {
-  title: "",
+  title: "Residental High Rise Projects | Infinite Building Technologies",
   description: ""
 }
 

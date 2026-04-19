@@ -4,42 +4,9 @@ import Image from "next/image"
 import Container from "@/components/ui/Container"
 import React, { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
-import { motion, AnimatePresence, Variants } from "motion/react"
+import { motion, AnimatePresence } from "motion/react"
 import Link from "next/link"
-
-
-
-const images = [
-  "/images/gateway8.webp",
-  "/images/central.webp",
-  "/images/espana.webp",
-]
-
-const slideVariants: Variants = {
-  initial: {
-    opacity: 0,
-    transition: {
-      duration: 0.1,
-      ease: "easeIn"
-    }
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      duration: 0.9,
-      ease: "easeIn"
-    }
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 1.3,
-      ease: "easeIn"
-    }
-  },
-}
-
-
+import { images, slideVariants } from "./HeroStats"
 
 export const Hero = () => {
 
@@ -92,13 +59,13 @@ export const Hero = () => {
           </p>
           <div className="pt-6 flex items-center gap-4 select-none">
             <ButtonCTA
-              to="/services"
+              to="#services"
               className="bg-white hover:bg-white/90 text-neutral-900 "
             >
               Explore our services
             </ButtonCTA>
             <ButtonCTA
-              to="/contact"
+              to="#contact"
             >
               Contact Us
             </ButtonCTA>

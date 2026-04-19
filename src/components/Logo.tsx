@@ -5,7 +5,7 @@ export const Logo = () => {
   return (
     <Link href="/" className="block h-15 w-80 overflow-hidden">
       <Image
-        src="/logoift.webp"
+        src="/images/logoift.webp"
         alt="Company Logo"
         width={1280}
         height={800}
