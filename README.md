@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Infinite Estate Project
+
+A modern, full-stack real estate showcase website built with **Next.js** and **TypeScript**, featuring residential and commercial property portfolios with smooth animations and responsive design.
+
+## Features
+
+### Property Categories
+- **Residential**: High-rise apartments, mixed-use developments, and plotted villas
+- **Commercial**: IT parks, IT-ITES SEZ zones, and retail malls
+
+### Core Functionality
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Dark Mode Support**: Toggle between light and dark themes using Next Themes
+- **Smooth Animations**: Fluid page transitions and scroll animations powered by Framer Motion
+- **WhatsApp Integration**: Floating WhatsApp button for instant customer communication
+- **Dynamic Image Gallery**: High-quality project images organized by property type
+- **SEO Optimized**: Next.js metadata for better search engine visibility
+
+### Sections
+- **Hero Section**: Eye-catching landing with carousel imagery
+- **About**: Company information and key highlights
+- **Services**: Property solutions and offerings
+- **Work/Portfolio**: Featured projects showcase
+- **Testimonials**: Client reviews and feedback
+- **Contact**: Lead generation and inquiry forms
+
+## Tech Stack
+
+- **Frontend Framework**: Next.js 16.2.3
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4, PostCSS
+- **Animations**: Framer Motion (Motion 12.38.0)
+- **Theme Management**: Next Themes
+- **UI Icons**: React Icons, Lucide React
+- **Development**: ESLint, Babel React Compiler
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+ and npm/yarn
+
+### Installation & Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Open browser to
+# http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Production Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+src/
+├── app/                    # Next.js app router pages
+│   ├── residental/        # Residential property pages
+│   └── commercial/        # Commercial property pages
+├── sections/              # Landing page sections
+├── components/            # Reusable React components
+│   ├── layout/           # Header/Footer layouts
+│   ├── ui/               # UI building blocks
+│   └── animation-components/  # Animation utilities
+├── lib/                   # Utility functions
+└── types/                 # TypeScript type definitions
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Key Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **DesktopNavbar/MobileNavbar**: Responsive navigation
+- **ShowcaseComponent**: Property display cards
+- **SectionAnimation**: Smooth scroll animations
+- **FloatingWhatsapp**: Direct messaging widget
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
