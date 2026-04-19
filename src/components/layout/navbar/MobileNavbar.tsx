@@ -4,11 +4,11 @@ import { useState } from "react"
 import { Logo } from "../../Logo"
 import { ChevronDown, Menu, X } from "lucide-react"
 import Link from "next/link"
-import ToggleMode from "@/components/ToggleModeTEMP"
 import { downloadItems, navLinks } from "./NavbarStats"
 import { cn } from "@/lib/utils"
 import { AnimatePresence, motion } from "motion/react"
 import { childAnimation, parentAnimation } from "@/components/animation-components/dropDownAnimation"
+import ToggleMode from "@/components/ToggleMode"
 
 export const MobileNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

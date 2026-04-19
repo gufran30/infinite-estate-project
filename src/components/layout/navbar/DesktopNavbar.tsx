@@ -8,7 +8,7 @@ import { childAnimation, parentAnimation } from "@/components/animation-componen
 import { downloadItems, navLinks } from "./NavbarStats"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
-import ToggleMode from "@/components/ToggleModeTEMP"
+import ToggleMode from "@/components/ToggleMode"
 
 
 export const DesktopNavbar = () => {
