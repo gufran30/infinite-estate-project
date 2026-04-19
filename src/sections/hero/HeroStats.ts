@@ -1,9 +1,9 @@
 import { Variants } from "motion";
 
 export const images = [
-  "/images/gateway8.webp",
-  "/images/central.webp",
-  "/images/espana.webp",
+  "/images/home-images/gateway8.webp",
+  "/images/home-images/central.webp",
+  "/images/home-images/espana.webp",
 ];
 
 export const slideVariants: Variants = {
